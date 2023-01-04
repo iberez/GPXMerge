@@ -44,7 +44,7 @@ class GPXMerge:
               # 1. Extract out trkpt at given intervals
               track_segment = trkseg.points[::self.skip_intveral]                 
               # 2. Remove trkpts without timestamp
-              track_segment = filter(lambda trkpt: trkpt.time is not None, track_segment)
+              track_segment = list(filter(lambda trkpt: trkpt.time is not None, track_segment))
               # 3. Sort trkpts chronologically
               track_segment.sort(key=lambda trkpt: trkpt.time)
               # 4. Append to track the processed trkseg of trkpts
